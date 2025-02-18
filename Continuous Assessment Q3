@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+class Product {
+    string a;
+    float b;
+    static float c;
+
+public:
+    Product(string name, float price) : a(name), b(price) {}
+
+    static void setC(float discount) { c = discount; }
+
+    float getFinalPrice() { return b * (1 - c); }
+
+    void display() { cout << a << " Final Price: " << getFinalPrice() << endl; }
+};
+
+float Product::c = 0;
+
+int main() {
+    Product p1("Item1", 100), p2("Item2", 200);
+    Product::setC(0.1);
+
+    p1.display();
+    p2.display();
+
+    return 0;
+}
